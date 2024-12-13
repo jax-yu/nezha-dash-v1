@@ -13,12 +13,12 @@ import { useTranslation } from "react-i18next";
 import {
   ChartBarSquareIcon,
   ViewColumnsIcon,
-  MapIcon,
+  // MapIcon,
 } from "@heroicons/react/20/solid";
 import { ServiceTracker } from "@/components/ServiceTracker";
 import ServerCardInline from "@/components/ServerCardInline";
 import { Loader } from "@/components/loading/Loader";
-import GlobalMap from "@/components/GlobalMap";
+// import GlobalMap from "@/components/GlobalMap";
 import { useStatus } from "@/hooks/use-status";
 import useFilter from "@/hooks/use-filter";
 
@@ -32,7 +32,7 @@ export default function Servers() {
   const { status } = useStatus();
   const { filter } = useFilter();
   const [showServices, setShowServices] = useState<string>("0");
-  const [showMap, setShowMap] = useState<string>("0");
+  // const [showMap, setShowMap] = useState<string>("0");
   const [inline, setInline] = useState<string>("0");
   const [currentGroup, setCurrentGroup] = useState<string>("All");
 
@@ -179,7 +179,7 @@ export default function Servers() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-5xl px-0">
+    <div className="mx-auto w-full max-w-6xl px-0">
       <ServerOverview
         total={totalServers}
         online={onlineServers}
@@ -190,20 +190,20 @@ export default function Servers() {
         downSpeed={downSpeed}
       />
       <section className="flex mt-6 items-center gap-2 w-full overflow-hidden">
-        <button
-          onClick={() => {
-            setShowMap(showMap === "0" ? "1" : "0");
-          }}
-          className={cn(
-            "rounded-[50px] text-white cursor-pointer [text-shadow:_0_1px_0_rgb(0_0_0_/_20%)] bg-blue-600  p-[10px] transition-all shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]  ",
-            {
-              "shadow-[inset_0_1px_0_rgba(0,0,0,0.2)] bg-blue-500":
-                showMap === "1",
-            },
-          )}
-        >
-          <MapIcon className="size-[13px]" />
-        </button>
+        {/*<button*/}
+        {/*  onClick={() => {*/}
+        {/*    setShowMap(showMap === "0" ? "1" : "0");*/}
+        {/*  }}*/}
+        {/*  className={cn(*/}
+        {/*    "rounded-[50px] text-white cursor-pointer [text-shadow:_0_1px_0_rgb(0_0_0_/_20%)] bg-blue-600  p-[10px] transition-all shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]  ",*/}
+        {/*    {*/}
+        {/*      "shadow-[inset_0_1px_0_rgba(0,0,0,0.2)] bg-blue-500":*/}
+        {/*        showMap === "1",*/}
+        {/*    },*/}
+        {/*  )}*/}
+        {/*>*/}
+        {/*  <MapIcon className="size-[13px]" />*/}
+        {/*</button>*/}
         <button
           onClick={() => {
             setShowServices(showServices === "0" ? "1" : "0");
@@ -243,12 +243,12 @@ export default function Servers() {
           setCurrentTab={setCurrentGroup}
         />
       </section>
-      {showMap === "1" && (
-        <GlobalMap
-          now={nezhaWsData.now}
-          serverList={nezhaWsData?.servers || []}
-        />
-      )}
+      {/*{showMap === "1" && (*/}
+      {/*  <GlobalMap*/}
+      {/*    now={nezhaWsData.now}*/}
+      {/*    serverList={nezhaWsData?.servers || []}*/}
+      {/*  />*/}
+      {/*)}*/}
       {showServices === "1" && <ServiceTracker />}
       {inline === "1" && (
         <section className="flex flex-col gap-2 overflow-x-scroll scrollbar-hidden mt-6">

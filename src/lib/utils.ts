@@ -15,8 +15,8 @@ export function formatNezhaInfo(now: number, serverInfo: NezhaServer) {
     cpu: serverInfo.state.cpu || 0,
     gpu: serverInfo.state.gpu || [],
     process: serverInfo.state.process_count || 0,
-    up: serverInfo.state.net_out_speed / 1024 / 1024 || 0,
-    down: serverInfo.state.net_in_speed / 1024 / 1024 || 0,
+    up: serverInfo.state.net_out_speed|| 0,
+    down: serverInfo.state.net_in_speed|| 0,
     last_active_time_string: lastActiveTime
       ? new Date(lastActiveTime).toLocaleString()
       : "",

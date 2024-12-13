@@ -19,3 +19,16 @@ export function formatBytes(bytes: number, decimals: number = 2) {
 
   return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
 }
+
+
+export function formatSpeed(val: number) {
+  const units = ["B/s", "KB/s", "MB/s", "GB/s", "TB/s"];
+  let index = 0;
+
+  while (val >= 1024 && index < units.length - 1) {
+    val /= 1024;
+    index++;
+  }
+
+  return `${val.toFixed(2)}${units[index]}`;
+}

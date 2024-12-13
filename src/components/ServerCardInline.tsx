@@ -16,7 +16,7 @@ import {
   GetOsName,
   MageMicrosoftWindows,
 } from "@/lib/logo-class";
-import { formatBytes } from "@/lib/format";
+import {formatBytes, formatSpeed} from "@/lib/format";
 import { Separator } from "./ui/separator";
 
 export default function ServerCardInline({
@@ -174,9 +174,9 @@ export default function ServerCardInline({
                 {t("serverCard.upload")}
               </p>
               <div className="flex items-center text-xs font-semibold">
-                {up >= 1024
-                  ? `${(up / 1024).toFixed(2)}G/s`
-                  : `${up.toFixed(2)}M/s`}
+                {
+                  formatSpeed(up)
+                }
               </div>
             </div>
             <div className={"flex w-16 flex-col"}>
@@ -184,9 +184,9 @@ export default function ServerCardInline({
                 {t("serverCard.download")}
               </p>
               <div className="flex items-center text-xs font-semibold">
-                {down >= 1024
-                  ? `${(down / 1024).toFixed(2)}G/s`
-                  : `${down.toFixed(2)}M/s`}
+                {
+                  formatSpeed(down)
+                }
               </div>
             </div>
             <div className={"flex w-20 flex-col"}>

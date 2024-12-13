@@ -12,7 +12,7 @@ import { Card } from "./ui/card";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Badge } from "./ui/badge";
-import { formatBytes } from "@/lib/format";
+import {formatBytes, formatSpeed} from "@/lib/format";
 
 export default function ServerCard({
   now,
@@ -101,7 +101,9 @@ export default function ServerCard({
               ))}
           </div>
         </section>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 place-items-stretch" style={{
+          flex: 1
+        }}>
           <section className={cn("grid grid-cols-5 items-center gap-3")}>
             <div className={"flex w-14 flex-col"}>
               <p className="text-xs text-muted-foreground">{"CPU"}</p>
@@ -133,9 +135,9 @@ export default function ServerCard({
                 {t("serverCard.upload")}
               </p>
               <div className="flex items-center text-xs font-semibold">
-                {up >= 1024
-                  ? `${(up / 1024).toFixed(2)}G/s`
-                  : `${up.toFixed(2)}M/s`}
+                {
+                  formatSpeed(up)
+                }
               </div>
             </div>
             <div className={"flex w-14 flex-col"}>
@@ -143,9 +145,9 @@ export default function ServerCard({
                 {t("serverCard.download")}
               </p>
               <div className="flex items-center text-xs font-semibold">
-                {down >= 1024
-                  ? `${(down / 1024).toFixed(2)}G/s`
-                  : `${down.toFixed(2)}M/s`}
+                {
+                  formatSpeed(down)
+                }
               </div>
             </div>
           </section>

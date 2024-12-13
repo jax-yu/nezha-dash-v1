@@ -69,7 +69,7 @@ function Header() {
   }, [settingData?.data?.custom_code]);
 
   return (
-    <div className="mx-auto w-full max-w-5xl">
+    <div className="mx-auto w-full max-w-6xl">
       <section className="flex items-center justify-between">
         <section
           onClick={() => navigate("/")}
@@ -153,7 +153,7 @@ function Overview() {
     setMounted(true);
   }, []);
   const timeOption = DateTime.TIME_SIMPLE;
-  timeOption.hour12 = true;
+  timeOption.hour12 = false;
   const [timeString, setTimeString] = useState(
     DateTime.now().setLocale("en-US").toLocaleString(timeOption),
   );
