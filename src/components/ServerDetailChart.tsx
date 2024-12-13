@@ -16,7 +16,7 @@ import { ServerDetailChartLoading } from "./loading/ServerDetailLoading";
 import AnimatedCircularProgressBar from "./ui/animated-circular-progress-bar";
 import { useWebSocketContext } from "@/hooks/use-websocket-context";
 import { useTranslation } from "react-i18next";
-import { formatBytes } from "@/lib/format";
+import {formatBytes, formatSpeed} from "@/lib/format";
 
 type gpuChartData = {
   timeStamp: string;
@@ -723,7 +723,7 @@ function NetworkChart({ now, data }: { now: number; data: NezhaServer }) {
                 </p>
                 <div className="flex items-center gap-1">
                   <span className="relative inline-flex  size-1.5 rounded-full bg-[hsl(var(--chart-1))]"></span>
-                  <p className="text-xs font-medium">{up.toFixed(2)} M/s</p>
+                  <p className="text-xs font-medium">{ formatSpeed(up) }</p>
                 </div>
               </div>
               <div className="flex flex-col w-20">
@@ -732,7 +732,7 @@ function NetworkChart({ now, data }: { now: number; data: NezhaServer }) {
                 </p>
                 <div className="flex items-center gap-1">
                   <span className="relative inline-flex  size-1.5 rounded-full bg-[hsl(var(--chart-4))]"></span>
-                  <p className="text-xs font-medium">{down.toFixed(2)} M/s</p>
+                  <p className="text-xs font-medium">{ formatSpeed(down) }</p>
                 </div>
               </div>
             </section>
@@ -769,7 +769,7 @@ function NetworkChart({ now, data }: { now: number; data: NezhaServer }) {
                 minTickGap={50}
                 interval="preserveStartEnd"
                 domain={[1, maxDownload]}
-                tickFormatter={(value) => `${value.toFixed(0)}M/s`}
+                tickFormatter={(value) => formatSpeed(value)}
               />
               <Line
                 isAnimationActive={false}
